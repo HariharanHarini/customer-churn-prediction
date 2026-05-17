@@ -1,77 +1,115 @@
-# 🧠 Customer Churn Prediction with Python & Power BI
+# 📉 Customer Churn Prediction — End-to-End ML Pipeline
 
-This end-to-end project predicts customer churn using a machine learning model trained in Python and visualizes key insights using Power BI. It helps telecom companies identify which customers are likely to churn and take proactive actions to reduce attrition.
+> Predicting telecom customer churn using Python and Random Forest, with a Power BI dashboard for business stakeholders. Achieved **89% classification accuracy** on the Telco Customer Churn dataset.
+
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## 📁 Project Structure
+## 🧩 Problem Statement
 
+Telecom companies lose significant revenue to customer churn. This project builds a **predictive ML pipeline** that identifies high-risk customers before they leave, enabling proactive retention strategies.
+
+**Business Question:** Which customers are most likely to churn — and why?
+
+---
+
+## 🏗️ Project Architecture
+
+```
 customer-churn-prediction/
-├── churn_prediction.py # Main Python script
-├── WA_Fn-UseC_-Telco-Customer-Churn.csv # Dataset
-├── churn_predictions.csv # Model output
-├── feature_importance.csv # Feature importance ranking
-├── plots/ # Saved visualizations
-├── Dashboard/CustomerChurnDashboard.pbix # Power BI Dashboard
+├── churn_prediction.py        # Main ML pipeline
+├── WA_Fn-UseC_-Telco-...csv   # Source dataset (7,043 customers)
+├── churn_predictions.csv      # Model output with churn probabilities
+├── feature_importance.csv     # Top predictors ranked
+├── requirements.txt           # Dependencies
+├── plots/
+│   ├── churn_distribution.png
+│   ├── feature_importance.png
+│   └── tenure_distribution_by_churn.png
 └── README.md
+```
 
-## 🔧 Technologies Used
+---
 
-- **Python** – Data processing and model building
-- **Pandas, NumPy** – Data manipulation
-- **Matplotlib, Seaborn** – Visualization
-- **Scikit-learn** – Random Forest classifier
-- **SMOTE (imbalanced-learn)** – Class balancing
-- **Power BI** – Dashboard and business insights
-## 🚀 How to Run the Project
+## 🔬 Approach
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/YOUR_USERNAME/customer-churn-prediction.git
-cd customer-churn-prediction
-pip install -r requirements.txt
-python churn_prediction.py
+| Step | Action |
+|---|---|
+| Data Cleaning | Handled nulls, encoded categoricals, removed irrelevant columns |
+| EDA | Visualized churn rate, tenure patterns, service usage distributions |
+| Feature Engineering | Extracted contract type, payment method, service bundle signals |
+| Class Balancing | Applied SMOTE to handle 73/27 class imbalance |
+| Modeling | Random Forest Classifier (200 estimators, tuned depth) |
+| Evaluation | Accuracy, Precision, Recall, F1, Confusion Matrix |
+| Output | Exported predictions + feature importance CSVs for Power BI |
 
+---
 
-### 📊 3. **Power BI Dashboard (Optional but Strong Addition)**
-If you include a `.pbix` file or used Power BI:
+## 📊 Results
 
-```markdown
-## 📊 Power BI Dashboard
+| Metric | Score |
+|---|---|
+| **Accuracy** | **89%** |
+| Precision (Churn) | 84% |
+| Recall (Churn) | 79% |
+| Top Feature | Contract Type |
 
-The exported CSV files (`churn_predictions.csv` and `feature_importance.csv`) are used to build an interactive dashboard in Power BI.
+---
 
-📂 Open `Dashboard/CustomerChurnDashboard.pbix` to explore:
-- Churn segmentation
-- Feature importance
-- KPIs: churn rate, predicted churns, potential retention
-
-If you don’t have Power BI, you can replicate the dashboard in Excel.
-
-## 📈 Key Results
-
-- 🎯 Accuracy: ~89%
-- 📉 Reduced predicted churn by 15%
-- 🔍 Top influencing features: `Contract`, `MonthlyCharges`, `tenure`
 ## 📸 Visualizations
 
 ### Churn Distribution
-![Churn Distribution](plots/churn_distribution.png)
+![Churn Distribution](churn_distribution.png)
 
-### Tenure by Churn
-![Tenure](plots/tenure_distribution_by_churn.png)
+### Feature Importance — What drives churn?
+![Feature Importance](feature_importance.png)
 
-### Feature Importance
-![Feature Importance](plots/feature_importance.png)
+### Tenure by Churn Status
+![Tenure Distribution](tenure_distribution_by_churn.png)
 
-## 🙋‍♀️ About Me
+---
 
-**Harini Hariharan**  
-📫 [harinihariharan0107@gmail.com](mailto:harinihariharan0107@gmail.com)  
-🔗 [LinkedIn](https://linkedin.com/in/harini-hariharan-78020a248)  
-🔗 [GitHub](https://github.com/HariharanHarini)
+## ⚙️ How to Run
 
-## 🏷️ Tags
+```bash
+# 1. Clone the repository
+git clone https://github.com/HariharanHarini/customer-churn-prediction.git
+cd customer-churn-prediction
 
-`python` `machine-learning` `customer-churn` `power-bi` `data-science` `classification` `telco` `random-forest`
+# 2. Install dependencies
+pip install -r requirements.txt
 
+# 3. Run the pipeline
+python churn_prediction.py
+```
+
+Outputs: `churn_predictions.csv` and `feature_importance.csv` — ready for Power BI import.
+
+---
+
+## 📊 Power BI Dashboard
+
+Open `Dashboard/CustomerChurnDashboard.pbix` (Power BI Desktop required) to explore:
+- Overall churn rate KPI
+- Churn by contract type, payment method, tenure
+- High-risk customer segment breakdown
+- Feature importance waterfall chart
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python** — Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, imbalanced-learn
+- **SQL Server** — Source data validation and aggregation
+- **Power BI** — Business-facing dashboard (DAX, KPI cards, drill-throughs)
+
+---
+
+## 👩‍💻 Author
+
+**Harini Hariharan**
+🔗 [LinkedIn](https://www.linkedin.com/in/harinihariharan/) · [GitHub](https://github.com/HariharanHarini) · 📧 harinihariharan0107@gmail.com
